@@ -28,8 +28,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             reply_markup=reply_markup
         )
         return
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="ФинБот готов. Введи доход или расход:
-Например: Потратил 500 на еду")
+    await context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="ФинБот готов. Введи доход или расход:\nНапример: Потратил 500 на еду"
+    )
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
@@ -59,10 +61,7 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     uid = user.username
     stats = user_data[uid]
-    msg = f"📊 Статистика:
-Доход: {stats['income']}₽
-Расход: {stats['expense']}₽
-Баланс: {stats['balance']}₽"
+    msg = f"📊 Статистика:\nДоход: {stats['income']}₽\nРасход: {stats['expense']}₽\nБаланс: {stats['balance']}₽"
     await update.message.reply_text(msg)
 
 async def reset(update: Update, context: ContextTypes.DEFAULT_TYPE):
