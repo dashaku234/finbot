@@ -88,7 +88,6 @@ async def activate(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("начать", start))
     app.add_handler(CommandHandler("оплатил", paid))
     app.add_handler(CommandHandler("активировать", activate))
     app.add_handler(CommandHandler("статистика", stats))
